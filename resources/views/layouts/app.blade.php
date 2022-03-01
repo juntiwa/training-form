@@ -78,7 +78,7 @@
          </div>
       </aside>
       <div class="flex-1">
-         <nav id="nav" class="nav flex justify-between items-center h-20  w-[calc(100%-240px)]  transition-all duration-300 fixed z-100 pr-5 shadow-sm bg-slate-50">
+         <nav id="nav" class="nav flex justify-between items-center h-20 w-full  ease-in-out  transition duration-500  z-100 pr-5 shadow-sm bg-slate-50" :class="{ 'w-full': !sidebarOpen }">
             <div class="sidebar-button flex items-center text-2xl font-medium">
                <button id="Btn" class="p-1 mr-1 text-2xl" @click="sidebarOpen = !sidebarOpen ">
                   <i class='bx bx-menu sidebarBtn text-4xl mr-2'></i>
@@ -92,7 +92,7 @@
 
                </div>
             </div>
-            <div class=" flex items-center bg-slate-300 border-slate-500  rounded-md h-12  pr-4 pl-1">
+            <div class=" flex items-center bg-slate-300 border-slate-500  rounded-md h-12  pr-4 pl-1 ">
                <img src="images/man.png" alt="" class=" h-10 w-10 rounded-md object-cover">
                <span class=" text-sm font-medium text-slate-400 whitespace-nowrap">Prem Shahi</span>
                <i class='bx bx-chevron-down text-2xl text-slate-600'></i>
@@ -104,9 +104,22 @@
          </main>
       </div>
    </div>
-   
+
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
    <script type="text/javascript" src="{{asset('js/script.js')}}"></script>
+
+   <script type="text/javascript">
+      let sidebar = document.querySelector(".sidebar");
+      let sidebarBtn = document.querySelector(".sidebarBtn");
+      let nav = document.getElementById("nav");
+
+
+      $(document).ready(function() {
+         $("#Btn").click(function() {
+            nav.style.width = "calc(100%-240px)";
+         })
+      })
+   </script>
 </body>
 
 </html>

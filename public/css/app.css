@@ -481,6 +481,15 @@ Ensure the default browser behavior of the `hidden` attribute.
 .top-1 {
   top: 0.25rem;
 }
+.-right-0 {
+  right: -0px;
+}
+.-left-0 {
+  left: -0px;
+}
+.left-0 {
+  left: 0px;
+}
 .col-span-1 {
   grid-column: span 1 / span 1;
 }
@@ -617,6 +626,15 @@ Ensure the default browser behavior of the `hidden` attribute.
 .w-10 {
   width: 2.5rem;
 }
+.w-screen {
+  width: 100vw;
+}
+.w-80 {
+  width: 20rem;
+}
+.w-\[\] {
+  width: ;
+}
 .max-w-6xl {
   max-width: 72rem;
 }
@@ -667,6 +685,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .overflow-hidden {
   overflow: hidden;
+}
+.overflow-y-auto {
+  overflow-y: auto;
 }
 .overflow-x-hidden {
   overflow-x: hidden;
@@ -936,17 +957,38 @@ Ensure the default browser behavior of the `hidden` attribute.
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
+.transition {
+  transition-property: color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
 .duration-300 {
   transition-duration: 300ms;
 }
 .duration-200 {
   transition-duration: 200ms;
 }
+.duration-500 {
+  transition-duration: 500ms;
+}
 .ease-in {
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
 }
+.ease-linear {
+  transition-timing-function: linear;
+}
+.ease-in-out {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
 .hover\:translate-x-2:hover {
   --tw-translate-x: 0.5rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.hover\:scale-125:hover {
+  --tw-scale-x: 1.25;
+  --tw-scale-y: 1.25;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 .hover\:bg-emerald-600:hover {
