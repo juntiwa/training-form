@@ -5,10 +5,12 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Document</title>
+   <title>Sign up - Course</title>
 
    <!-- css -->
-   <link rel="stylesheet" href="css/signup.css">
+   <link rel="stylesheet" href="{{asset('css/signup.css')}}">
+   <link rel="stylesheet" href="{{asset('css/app.css')}}">
+
 
    <!-- font -->
    <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,21 +31,21 @@
                   <h2>Sign up</h2>
 
                   <input type="text" name="username" placeholder="Username" id="username" class="form-control">
-                  @if ($errors->has('username'))
-                  <span class="text-danger">{{ $errors->first('username') }}</span>
-                  @endif
+                  @error('username')
+                  <label class="text-red-500">{{ $message }}</label>
+                  @enderror
 
-                  <input type="text" name="email" placeholder="Email" id="email_address" class="form-control">
-                  @if ($errors->has('email'))
-                  <span class="text-danger">{{ $errors->first('email') }}</span>
-                  @endif
+                  <input type="text" name="email" placeholder="Email" id="email_address" class="form-control" value="{{ old('email')}}">
+                  @error('email')
+                  <label class="text-red-500">{{ $message }}</label>
+                  @enderror
 
                   <input type="password" name="password" placeholder="Password" id="password" class="form-control">
-                  @if ($errors->has('password'))
-                  <span class="text-danger">{{ $errors->first('password') }}</span>
-                  @endif
+                  @error('password')
+                  <label class=" text-red-500">{{ $message }}</label>
+                  @enderror
 
-                  <input  type="submit" value="Sign up">
+                  <input type="submit" value="Sign up">
                   <p class="signup">Already have an account? <a href="{{ url('/login') }}" onclick="toggleForm();">Sign in</a> </p>
 
                </form>

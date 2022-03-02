@@ -8,7 +8,8 @@
    <title>Document</title>
 
    <!-- css -->
-   <link rel="stylesheet" href="css/signin.css">
+   <link rel="stylesheet" href="{{asset('css/signin.css')}}">
+   <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
    <!-- font -->
    <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,14 +34,14 @@
                   <h2>Sign in</h2>
 
                   <input type="text" name="email" placeholder="test@gmail.com" id="email" class="form-control" required autofocus>
-                  @if ($errors->has('email'))
-                  <span class="text-danger">{{ $errors->first('email') }}</span>
-                  @endif
+                  @error('email')
+                  <label class="text-red-500">{{ $message }}</label>
+                  @enderror
 
                   <input type="password" name="password" placeholder="Password" id="password" class="form-control" required>
-                  @if ($errors->has('password'))
-                  <span class="text-danger">{{ $errors->first('password') }}</span>
-                  @endif
+                  @error('password')
+                  <label class="text-red-500">{{ $message }}</label>
+                  @enderror
 
 
                   <input type="submit" value="Sign in">

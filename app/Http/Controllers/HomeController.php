@@ -4,27 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Course;
 use App\Models\User;
+use App\Models\Course;
 
-class UserController extends Controller
+class HomeController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-   public function indexView()
-   {
-      if (Auth::check()) {
-         // data form model user
-         $user = Auth::user();
-         $username = $user->username;
-         $course = Course::all();
-         return view('user.index', compact('username', 'course'));
-      }
-      return redirect("login")->withSuccess('Access is not permitted');
-   }
+    public function index()
+    {
+      
+      $course = Course::all();
+
+      return view('index', compact('course'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -47,19 +43,6 @@ class UserController extends Controller
         //
     }
 
-
-   public function profileView()
-   {
-      if (Auth::check()) {
-         // data form model user
-         $profiles = Auth::user();
-
-         return view('user.profile', compact('profiles'));
-      }
-
-      return redirect("login")->withSuccess('Access is not permitted');
-   }
-
     /**
      * Display the specified resource.
      *
@@ -79,10 +62,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-      $profiles = User::find($id);
-      // $username = $profiles->username;
-
-      return view('user.editprofile', compact('profiles'));
+        //
     }
 
     /**
@@ -94,17 +74,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $profiles = User::find($id);
-      $profiles->username = $request['username'];
-      $profiles->name = $request['name'];
-      $profiles->lname = $request['lname'];
-      $profiles->email = $request['email'];
-
-      $profiles->save();
-
-      return redirect("profile")->withSuccess('Successfully!');
-      // return $request->input() ;
-
+        //
     }
 
     /**

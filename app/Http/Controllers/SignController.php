@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Course;
+use App\Models\Member;
 use Session;
 use Hash;
 
@@ -62,6 +63,8 @@ class SignController extends Controller
          'username' => 'required',
          'email' => 'required|email|unique:users',
          'password' => 'required|min:6',
+      ],[
+         'email.unique' => "มีข้อมูลอยู่เเล้ว"
       ]);
       $data = $request->all();
       $check = $this->createUser($data);
@@ -70,13 +73,24 @@ class SignController extends Controller
 
    public function createUser(array $data)
    {
-      return User::create([
+      $user = User::create([
          'username' => $data['username'],
          'email' => $data['email'],
          'password' => Hash::make($data['password']),
          'permission' => 1
       ]);
+
+      $user->save();
+
+      $id = $user->id;
+      $member = Member::create([
+         'user_id' => $id
+      ]);
+      $member->save();
+
    }
+
+
 
    /**
     * Display the specified resource.
@@ -135,6 +149,6 @@ class SignController extends Controller
    {
       Session::flush();
       Auth::logout();
-      return redirect('login');
+      return redirect('/');
    }
 }

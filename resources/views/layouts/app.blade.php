@@ -5,11 +5,12 @@
    <title>Course - @yield('title')</title>
 
    <link rel="stylesheet" href="{{asset('css/app.css')}}">
-   <link rel="stylesheet" href="{{asset('css/modal.css')}}">
 
 
    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" />
    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
 
    <!-- Boxicons -->
    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
@@ -24,6 +25,7 @@
                <i class='bx bxs-leaf text-3xl uppercase text-indigo-500'></i>
                <h1 class="text-3xl uppercase text-indigo-500">Course</h1>
             </div>
+            @if(Auth::user() != null)
             <ul class="flex flex-col py-4">
                <li>
                   <a href="/" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
@@ -32,42 +34,51 @@
                   </a>
                </li>
                <li>
-                  <a href="#" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                     <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="bx bx-music"></i></span>
-                     <span class="text-sm font-medium">Music</span>
+                  <a href="{{ route('profile') }}" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                     <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="bx bx-user"></i></span>
+                     <span class="text-sm font-medium">Profile</span>
                   </a>
                </li>
+               <!-- <li>
+                  <a href="{{ route('profile') }}" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                     <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class='bx bx-registered'></i></span>
+                     <span class="text-sm font-medium">Register Course</span>
+                  </a>
+               </li> -->
+               <!-- <li>
+                  <a href="#" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                     <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="bx bx-bell"></i></span>
+                     <span class="text-sm font-medium">Notifications</span>
+                     <span class="ml-auto mr-6 text-sm bg-red-100 rounded-full px-3 py-px text-red-500">5</span>
+                  </a>
+               </li> -->
                <li>
-                  <a href="#" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                     <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="bx bx-drink"></i></span>
-                     <span class="text-sm font-medium">Drink</span>
+                  @if(Auth::user() != null)
+                  <a href="{{ route('logout')}}" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                     <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="bx bx-log-out"></i></span>
+                     <span class="text-sm font-medium">Logout</span>
                   </a>
+                  @endif
+
                </li>
+            </ul>
+            @else
+            <ul class="flex flex-col py-4">
                <li>
-                  <a href="#" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                     <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="bx bx-shopping-bag"></i></span>
-                     <span class="text-sm font-medium">Shopping</span>
+                  <a href="/" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                     <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="bx bx-home"></i></span>
+                     <span class="text-sm font-medium">Dashboard</span>
                   </a>
                </li>
-               <li>
-                  <a href="#" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                     <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="bx bx-chat"></i></span>
-                     <span class="text-sm font-medium">Chat</span>
-                  </a>
-               </li>
+
+
                <li>
                   <a href="{{ route('profile')}}" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
                      <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="bx bx-user"></i></span>
                      <span class="text-sm font-medium">Profile</span>
                   </a>
                </li>
-               <li>
-                  <a href="#" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
-                     <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="bx bx-bell"></i></span>
-                     <span class="text-sm font-medium">Notifications</span>
-                     <span class="ml-auto mr-6 text-sm bg-red-100 rounded-full px-3 py-px text-red-500">5</span>
-                  </a>
-               </li>
+
                <li>
                   <a href="{{ route('logout')}}" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
                      <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"><i class="bx bx-log-out"></i></span>
@@ -75,6 +86,7 @@
                   </a>
                </li>
             </ul>
+            @endif
          </div>
       </aside>
       <div class="flex-1">
@@ -92,13 +104,54 @@
 
                </div>
             </div>
-            <div class=" flex items-center bg-slate-300 border-slate-500  rounded-md h-12  pr-4 pl-1 ">
-               <img src="images/man.png" alt="" class=" h-10 w-10 rounded-md object-cover">
-               <span class=" text-sm font-medium text-slate-400 whitespace-nowrap">Prem Shahi</span>
-               <i class='bx bx-chevron-down text-2xl text-slate-600'></i>
+
+
+            <div class="grid grid-cols-1 bg-gray-100 border-slate-500   rounded-md h-12 pt-1  pr-4 pl-4">
+               <div x-data=" { dropdownOpen: false }">
+                  <button @click="dropdownOpen = !dropdownOpen" class="flex items-center">
+                     @if(Auth::user() != null)
+                     <img src="images/man.png" alt="" class=" h-10 w-10 rounded-md object-cover">
+                     <span class=" text-sm font-medium text-slate-400 whitespace-nowrap">{{Auth::user()->name}}</span>
+                     <i class='bx bx-chevron-down text-2xl text-slate-600'></i>
+                     @else
+                     <img src="images/key.png" alt="" class=" h-10 w-10 mr-2 rounded-md object-cover">
+                     <span class=" text-sm font-medium text-slate-400 whitespace-nowrap">Login</span>
+                     <i class='bx bx-chevron-down text-2xl text-slate-600'></i>
+
+                     @endif
+                  </button>
+
+                  <div x-show="dropdownOpen" @click="dropdownOpen = false" class="fixed inset-0 h-full w-full z-10"></div>
+
+                  <div x-show="dropdownOpen" class="absolute right-0 mt-2 bg-white rounded-md shadow-lg overflow-hidden z-20" style="width:20rem;">
+
+
+                     <div class="py-2">
+                        @if(Auth::user() != null)
+                        <a href="#" class="flex items-center px-4 py-3 border-b hover:bg-gray-100 -mx-2">
+                           <img class="h-8 w-8 rounded-full object-cover mx-1" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80" alt="avatar">
+                           <p class="text-gray-600 text-sm mx-2">
+                              <span class="font-bold" href="#">Sara Salah</span> replied on the <span class="font-bold text-blue-500" href="#">Upload Image</span> artical . 2m
+                           </p>
+                        </a>
+
+                        @else
+                        <a href="{{route('login')}}" class="flex items-center px-4 py-3 hover:bg-gray-100 -mx-2">
+                           <img class="h-8 w-8 rounded-full border-slate-400 object-cover mx-1" src="images/secret.png" alt="avatar">
+                           <p class="text-gray-600 text-sm mx-2">
+                              <span class="font-bold" href="#">เข้าสู่ระบบ</span>
+                           </p>
+                        </a>
+                        @endif
+
+                     </div>
+                     <a href="#" class="block bg-gray-800 text-white text-center font-bold py-2">See all notifications</a>
+                  </div>
+               </div>
             </div>
+
          </nav>
-         <main class="p-4 mt-20">
+         <main class="p-4 mt-3">
             @yield('content')
 
          </main>
@@ -106,8 +159,6 @@
    </div>
 
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-   <script type="text/javascript" src="{{asset('js/script.js')}}"></script>
-
    <script type="text/javascript">
       let sidebar = document.querySelector(".sidebar");
       let sidebarBtn = document.querySelector(".sidebarBtn");
